@@ -11,6 +11,7 @@
 DEFAULT_PASSWORD = '123456'
 ADMIN_EMAIL = 'admin@adquick.com'
 AMOUNT_OF_USERS = 2
+AMOUNT_OF_BILLBOARDS = 2
 
 # Create Users
 puts 'Creating Users'
@@ -18,11 +19,18 @@ puts 'Creating Users'
 def create_user(email = nil, role = 0)
   email ||= Faker::Internet.email
   password = DEFAULT_PASSWORD
-  user = User.create(email: email, password: password, role: role)
+  User.create(email: email, password: password, role: role)
 end
 
 admin_user = create_user(ADMIN_EMAIL, role = 1)
 
 AMOUNT_OF_USERS.times do |i|
   create_user("client#{i}@adquick.com")
+end
+
+AMOUNT_OF_BILLBOARDS.times do
+  Billboard.create(
+    address: Faker::Address.full_address,
+    url: Faker::Internet.url
+  )
 end

@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
 
   enum :role, { user: 0, admin: 1 }, enums: true, default: :user
+
+  has_many :billboard_interactions, dependent: :destroy
+  has_many :billboards, through: :billboard_interactions
 end
