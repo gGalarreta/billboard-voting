@@ -17,6 +17,8 @@ RUN bundle install
 
 COPY . /src/app/
 
+RUN bin/rails tailwindcss:install
+
 RUN bundle exec rake assets:precompile
 
 EXPOSE 3000

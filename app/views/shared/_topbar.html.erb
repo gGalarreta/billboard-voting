@@ -1,0 +1,18 @@
+<header class="bg-blue shadow-md w-full h-20 px-6 px-6 py-4 flex items-center justify-between fixed left-0 right-0 z-50">
+  <div class="flex items-center space-x-3">
+    <span class="text-lg font-bold">Billboard voting</span>
+  </div>
+
+  <div class="flex-1 mx-4">
+    <input type="text" placeholder="Search..." class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+  </div>
+
+  <div class="flex space-x-4 items-center">
+    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Batch Import</button>
+    <i class="fa fa-bell text-gray-700 text-xl"></i>
+    <i class="fa fa-user text-gray-700 text-xl h-10 w-10 rounded-full"></i>
+    <%= link_to destroy_user_session_path, method: :delete, class: "text-gray-700 flex items-center" do %>
+      <i class="fa fa-sign-out-alt mr-2"></i>
+    <% end %>
+  </div>
+</header>
