@@ -1,17 +1,8 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
 DEFAULT_PASSWORD = '123456'
 ADMIN_EMAIL = 'admin@adquick.com'
 AMOUNT_OF_USERS = 2
 AMOUNT_OF_BILLBOARDS = 2
+AMOUNT_OF_CSV = 1
 
 # Create Users
 puts 'Creating Users'
@@ -34,3 +25,15 @@ AMOUNT_OF_BILLBOARDS.times do
     url: Faker::Internet.url
   )
 end
+
+def create_csv
+  csv_upload = CsvUpload.create(status: 1)
+  csv_upload.file.attach(
+    io: File.open(Rails.root.join('spec/fixtures/csv_test.csv')),
+    filename: 'csv_test.csv',
+    content_type: 'text/csv'
+  )
+end
+
+
+create_csv
