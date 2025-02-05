@@ -22,9 +22,10 @@ end
 AMOUNT_OF_BILLBOARDS.times do
   Billboard.create(
     address: Faker::Address.full_address,
-    url: Faker::Internet.url
+    url: 'https://images.pexels.com/photos/802024/pexels-photo-802024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   )
 end
+
 
 def create_csv
   csv_upload = CsvUpload.create(status: 1)
