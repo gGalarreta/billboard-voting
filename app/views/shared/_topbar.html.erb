@@ -8,7 +8,9 @@
   </div>
 
   <div class="flex space-x-4 items-center">
-    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Batch Import</button>
+    <%= link_to home_batch_import_path, class: "bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600" do %>
+      Batch Import
+    <% end %>
     <i class="fa fa-bell text-gray-700 text-xl"></i>
     <i class="fa fa-user text-gray-700 text-xl h-10 w-10 rounded-full"></i>
     <%= link_to destroy_user_session_path, method: :delete, class: "text-gray-700 flex items-center" do %>
