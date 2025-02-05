@@ -1,0 +1,21 @@
+<div class="max-w-lg mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+  <h1 class="text-2xl font-bold mb-6 text-gray-700">Batch Import</h1>
+
+  <%= form_with url: home_batch_import_path, method: :post, multipart: true, scope: :csv_upload, class: "space-y-6" do |f| %>
+    
+    <div class="space-y-2">
+      <label class="block text-gray-700 font-semibold">Title</label>
+      <%= f.text_field :title, class: "w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <div class="space-y-2">
+      <label class="block text-gray-700 font-semibold">Upload File</label>
+      <%= f.file_field :file, class: "w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <div class="text-center mt-8">
+      <%= f.submit "Submit", class: "bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600" %>
+    </div>
+
+  <% end %>
+</div>

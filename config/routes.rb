@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'home#index'
+  get 'home/batch_import', to: 'home#show_batch_import'
+  post 'home/batch_import', to: 'home#batch_import'
 end
