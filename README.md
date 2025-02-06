@@ -1,24 +1,33 @@
-# README
+# billboard voting
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisities
+You need the next aplication installed and open to run the project
+```bash
+docker
+docker-compose
+```
 
-Things you may want to cover:
+## Recommendation
+You could use a virtual environment to have a better experience running the project
 
-* Ruby version
 
-* System dependencies
+# Getting Started
 
-* Configuration
+## Docker Setup
+```bash
+docker-compose build
+docker-compose up
+```
 
-* Database creation
+## Server available
 
-* Database initialization
+```bash
+http://0.0.0.0:3000/
+```
 
-* How to run the test suite
+## Usage
 
-* Services (job queues, cache servers, search engines, etc.)
+admin user: 'admin@adquick.com'
+password: 123456
 
-* Deployment instructions
-
-* ...
+It is used sidekiq to upload the files, so a way to refresh the view when it is ready is a pending task
