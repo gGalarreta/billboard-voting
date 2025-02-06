@@ -3,17 +3,13 @@
     <span class="text-lg font-bold">Billboard voting</span>
   </div>
 
-  <div class="flex-1 mx-4">
-    <input type="text" placeholder="Search..." class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-  </div>
-
   <div class="flex space-x-4 items-center">
     <%= link_to home_batch_import_path, class: "bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600" do %>
       Batch Import
     <% end %>
     <i class="fa fa-bell text-gray-700 text-xl"></i>
     <i class="fa fa-user text-gray-700 text-xl h-10 w-10 rounded-full"></i>
-    <%= link_to destroy_user_session_path, method: :delete, class: "text-gray-700 flex items-center" do %>
+    <%= link_to destroy_user_session_path, method: :delete, class: "text-gray-700 flex items-center", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to sign out?" } do %>
       <i class="fa fa-sign-out-alt mr-2"></i>
     <% end %>
   </div>

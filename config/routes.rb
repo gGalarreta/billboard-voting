@@ -11,7 +11,18 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root 'home#index'
+
+  authenticated :user do
+    root "home#index", as: :authenticated_root
+  end
+
+  unauthenticated do
+    root "home#login", as: :unauthenticated_root
+  end
+
+  get 'home', to: 'home#index', as: 'home_index'
   get 'home/batch_import', to: 'home#show_batch_import'
   post 'home/batch_import', to: 'home#batch_import'
+  post 'home/:id/upvote', to: 'home#upvote'
+  post 'home/:id/downvote', to: 'home#downvote'
 end

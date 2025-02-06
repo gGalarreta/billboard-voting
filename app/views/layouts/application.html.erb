@@ -17,8 +17,6 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%= render 'layouts/auth_links' %> 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" defer></script>
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
@@ -27,13 +25,17 @@
   </head>
 
   <body class="bg-gray-100 text-gray-900">
-    <%= render 'shared/topbar' %> 
-
-    <div class="flex pt-20"> 
-      <%= render 'shared/sidebar' %> 
-      <main class="flex-1 p-6 ml-64">
-        <%= yield %>
-      </main>
-    </div>
-  </body>
+    <% if user_signed_in? %>
+      <%= render 'shared/topbar' %> 
+      <div class="flex pt-20"> 
+        <%= render 'shared/sidebar' %> 
+        <main class="flex-1 p-6 ml-64">
+          <%= yield %>
+        </main>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
+  </body> 
 </html>
+

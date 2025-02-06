@@ -1,0 +1,7 @@
+<div id="pagination-container" class="mt-6 flex justify-center space-x-2">
+  <% if page > 1 %>
+    <%= link_to 'Previous', home_index_path(page: page - 1, filter: params[:filter]), class: "px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300", data: { action: "click->billboards#filter" } %>
+  <% end %>
+
+  <%= link_to 'Next', home_index_path(page: page + 1, filter: params[:filter]), class: "px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300", data: { action: "click->billboards#filter" } if @total_billboards > page * @per_page %>
+</div>

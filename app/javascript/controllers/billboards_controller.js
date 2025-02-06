@@ -4,25 +4,32 @@ export default class extends Controller {
   static targets = ["list", "pagination"];
 
   connect() {
-    console.log("Billboards Stimulus Controller Connected");
+    console.log(" Billboards Stimulus Controller Connected");
   }
 
   filter(event) {
-    event.preventDefault();
+    console.log(event);
+    event.preventDefault(); 
     const url = event.currentTarget.href;
+    const currentPath = window.location.pathname;
+
+    if (currentPath.startsWith("/home/batch_import")) {
+      window.location.href = "/";
+    }
 
     fetch(url, {
-      headers: { "X-Requested-With": "XMLHttpRequest" },
+      headers: { 
+        "X-Requested-With": "XMLHttpRequest",
+        "Accept": "application/json"
+      }
     })
-      .then((response) => response.text())
-      .then((html) => {
-        this.listTarget.innerHTML = new DOMParser()
-          .parseFromString(html, "text/html")
-          .querySelector("#billboards-container").innerHTML;
-
-        this.paginationTarget.innerHTML = new DOMParser()
-          .parseFromString(html, "text/html")
-          .querySelector("#pagination-container").innerHTML;
-      });
+      .then(response => response.json())
+      .then(data => {
+        const billboardContainer = document.querySelector("#billboards-container")
+        if (billboardContainer) {
+            billboardContainer.innerHTML = data.html
+        }
+      })
+      .catch(error => console.error(" Fetch error:", error));
   }
 }
