@@ -1,0 +1,31 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="text-center bg-white p-10 rounded-lg shadow-lg w-96">
+    <h1 class="text-3xl font-bold text-gray-800">Welcome to Billing Voting App</h1>
+    <p class="text-gray-600 mt-2">Sign in to continue.</p>
+
+    <!-- Devise Login Form -->
+    <%= form_with url: user_session_path, method: :post, class: "space-y-4 mt-6" do |f| %>
+      <div>
+        <label class="block text-gray-700 font-semibold">Email</label>
+        <%= f.email_field :email, class: "w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" %>
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-semibold">Password</label>
+        <%= f.password_field :password, class: "w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" %>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <div>
+          <%= f.check_box :remember_me %>
+          <label class="text-gray-600">Remember me</label>
+        </div>
+        <%= link_to "Forgot Password?", new_password_path(:user), class: "text-blue-500 hover:underline" %>
+      </div>
+
+      <div class="mt-6">
+        <%= f.submit "Login", class: "w-full px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition" %>
+      </div>
+    <% end %>
+  </div>
+</div>
