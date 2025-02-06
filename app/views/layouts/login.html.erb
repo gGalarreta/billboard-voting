@@ -4,7 +4,7 @@
     <p class="text-gray-600 mt-2">Sign in to continue.</p>
 
     <!-- Devise Login Form -->
-    <%= form_with url: user_session_path, method: :post, class: "space-y-4 mt-6" do |f| %>
+    <%= form_for(User.new, as: :user, url: '/users/sign_in') do |f| %>
       <div>
         <label class="block text-gray-700 font-semibold">Email</label>
         <%= f.email_field :email, class: "w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" %>
