@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users#, skip: [:sessions]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
+
+  # devise_scope :user do
+  #   get    "login",  to: "home#login", as: :new_user_session
+  #   post   "login",  to: "devise/sessions#create", as: :user_session
+  #   delete "logout", to: "devise/sessions#destroy", as: :destroy_user_session
+  # end
 
   authenticated :user do
     root "home#index", as: :authenticated_root
